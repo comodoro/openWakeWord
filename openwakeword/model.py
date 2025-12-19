@@ -133,7 +133,8 @@ class Model():
         if inference_framework == "onnx":
             try:
                 import onnxruntime as ort
-
+                ort.disable_telemetry_events()
+                
                 def onnx_predict(onnx_model, x):
                     return onnx_model.run(None, {onnx_model.get_inputs()[0].name: x})
 
